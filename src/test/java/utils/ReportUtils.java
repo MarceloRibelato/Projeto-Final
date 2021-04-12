@@ -28,7 +28,7 @@ public class ReportUtils {
         reportBuilder.setAdditionalInfo("Environment", "My Environment");
         reportBuilder.setAdditionalInfo("Date", dateFormat.format(date));
         List<Object> cucumberJsonReports = new ArrayList<>();
-        cucumberJsonReports.add(new File("target/cucumber.json"));
+        cucumberJsonReports.add(new File("target/report/cucumber.json"));
         reportBuilder.build(cucumberJsonReports);
     }
 }

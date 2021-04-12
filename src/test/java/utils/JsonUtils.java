@@ -16,11 +16,9 @@ public class JsonUtils {
     private String value;
 
     public JSONObject updateJsonByKey(JSONObject obj, String keyMain, String newValue) throws Exception {
-
         Iterator iterator = obj.keys();
-        String key = null;
         while (iterator.hasNext()) {
-            key = (String) iterator.next();
+           var key =String.valueOf(iterator.next());
 
             if ((obj.optJSONArray(key) == null) && (obj.optJSONObject(key) == null)) {
                 if ((key.equals(keyMain))) {
@@ -63,12 +61,11 @@ public class JsonUtils {
         return newJson;
     }
 
-    public String getJsonValueByKey(JSONObject obj, String keyMain) throws JSONException {
+    public String updateJsonValueByKey(JSONObject obj, String keyMain) throws JSONException {
 
         Iterator iterator = obj.keys();
-        String key = null;
         while (iterator.hasNext()) {
-            key = (String) iterator.next();
+           var key = String.valueOf(iterator.next());
 
             if ((obj.optJSONArray(key) == null) && (obj.optJSONObject(key) == null)) {
                 if ((key.equals(keyMain))) {
@@ -76,15 +73,14 @@ public class JsonUtils {
                 }
             }
 
-
             if (obj.optJSONObject(key) != null) {
-                getJsonValueByKey(obj.getJSONObject(key), keyMain);
+                updateJsonValueByKey(obj.getJSONObject(key), keyMain);
             }
 
             if (obj.optJSONArray(key) != null) {
                 JSONArray jArray = obj.getJSONArray(key);
                 for (int i = 0; i < jArray.length(); i++) {
-                    getJsonValueByKey(jArray.getJSONObject(i), keyMain);
+                    updateJsonValueByKey(jArray.getJSONObject(i), keyMain);
                 }
             }
         }

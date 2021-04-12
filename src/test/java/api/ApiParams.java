@@ -1,9 +1,9 @@
-package utils;
+package api;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class ParamsUtils {
+public class ApiParams {
 
     static Map<String, String> params = new HashMap<>();
 

@@ -1,12 +1,12 @@
 package steps;
 
-import api.ApiRequeste;
+import api.ApiRequest;
 import io.cucumber.java.es.Dado;
 import io.cucumber.java.it.Quando;
 import io.cucumber.java.pt.Entao;
 import org.apache.http.HttpStatus;
 import org.json.JSONException;
-import utils.HeaderUtils;
+import api.ApiHeaders;
 import utils.JsonUtils;
 import utils.PropertiesUtils;
 
@@ -15,7 +15,7 @@ import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-public class CrudUsuarioSteps extends ApiRequeste {
+public class CrudUsuarioSteps extends ApiRequest {
 
     PropertiesUtils prop = new PropertiesUtils();
     JsonUtils jsonUtils = new JsonUtils();
@@ -24,7 +24,7 @@ public class CrudUsuarioSteps extends ApiRequeste {
     @Dado("que estou logado na api de cadastro")
     public void que_estou_logado_na_api_de_cadastro() throws IOException, JSONException {
         uri = prop.getProp("uri_cadastro") + "login";
-        headers = HeaderUtils.setEmptyHeaders();
+        headers = ApiHeaders.setEmptyHeaders();
         body = jsonUtils.parseJSONFile("login.json");
         super.POST();
         token = response.jsonPath().getString("token");
@@ -33,7 +33,7 @@ public class CrudUsuarioSteps extends ApiRequeste {
     @Quando("envio um requeste com dados validos")
     public void envio_um_requeste_com_dados_validos() throws IOException, JSONException {
         uri = prop.getProp("uri_cadastro") + "users";
-        headers =  HeaderUtils.setHeaderUsers(token);
+        headers =  ApiHeaders.setHeaderUsers(token);
         body = jsonUtils.parseJSONFile("create_user.json");
         super.POST();
     }

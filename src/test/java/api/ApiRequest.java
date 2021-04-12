@@ -2,7 +2,7 @@ package api;
 
 import static io.restassured.RestAssured.given;
 
-public class ApiRequeste extends ApiUtils implements ApiVerbos {
+public class ApiRequest extends ApiUtils implements ApiVerbos {
 
     @Override
     public void GET() {

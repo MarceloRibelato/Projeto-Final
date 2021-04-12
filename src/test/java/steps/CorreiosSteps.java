@@ -1,19 +1,19 @@
 package steps;
 
-import api.ApiRequeste;
+import api.ApiRequest;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.es.Dado;
 import io.cucumber.java.it.Quando;
 import io.cucumber.java.pt.E;
 import io.cucumber.java.pt.Então;
-import utils.HeaderUtils;
-import utils.ParamsUtils;
+import api.ApiHeaders;
+import api.ApiParams;
 import utils.PropertiesUtils;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-public class CorreiosSteps extends ApiRequeste {
+public class CorreiosSteps extends ApiRequest {
 
     PropertiesUtils prop = new PropertiesUtils();
 
@@ -25,8 +25,8 @@ public class CorreiosSteps extends ApiRequeste {
     @Quando("envio um com dados validos")
     public void envio_um_com_dados_validos() {
         uri = prop.getProp("uri_correios");
-        headers = HeaderUtils.setEmptyHeaders();
-        params = ParamsUtils.getParams();
+        headers = ApiHeaders.setEmptyHeaders();
+        params = ApiParams.getParams();
         super.GET();
     }
 
@@ -44,16 +44,16 @@ public class CorreiosSteps extends ApiRequeste {
     @Quando("envio um com dados validos datatable")
     public void envio_um_com_dados_validos_datatable(DataTable dataTable) {
         uri = prop.getProp("uri_correios");
-        headers = HeaderUtils.setEmptyHeaders();
-        params = ParamsUtils.setParams(dataTable.asMaps().get(0));
+        headers = ApiHeaders.setEmptyHeaders();
+        params = ApiParams.setParams(dataTable.asMaps().get(0));
         super.GET();
     }
 
     @Quando("envio um com dados  {string}, {string}")
     public void envio_um_com_dados(String sCepOrigem, String sCepDestino) {
         uri = prop.getProp("uri_correios");
-        headers = HeaderUtils.setEmptyHeaders();
-        params = ParamsUtils.getParams();
+        headers = ApiHeaders.setEmptyHeaders();
+        params = ApiParams.getParams();
         params.put("sCepOrigem", sCepOrigem);
         params.put("sCepDestino", sCepDestino);
         super.GET();

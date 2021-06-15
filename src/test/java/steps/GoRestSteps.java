@@ -6,6 +6,7 @@ import api.ApiRequest;
 import io.cucumber.java.es.Dado;
 import io.cucumber.java.it.Quando;
 import io.cucumber.java.pt.Entao;
+import objects.User;
 import utils.PropertiesUtils;
 
 import static org.junit.Assert.assertEquals;
@@ -28,6 +29,7 @@ public class GoRestSteps extends ApiRequest {
 
     @Entao("o usuario deve ser criado corretamente")
     public void o_usuario_deve_ser_criado_corretamente() {
+        var ret= response.as(User.class);
         assertEquals(super.body.getString("name"), response.jsonPath().getString("data.name"));
     }
 

@@ -22,8 +22,8 @@ public class CorreiosSteps extends ApiRequest {
         super.logInfo("Esta Api não requer token");
     }
 
-    @Quando("envio um com dados validos")
-    public void envio_um_com_dados_validos() {
+    @Quando("envio um request com dados validos")
+    public void envio_um_request_com_dados_validos() {
         uri = prop.getProp("uri_correios");
         headers = ApiHeaders.setEmptyHeaders();
         params = ApiParams.getParams();
@@ -41,16 +41,16 @@ public class CorreiosSteps extends ApiRequest {
         assertEquals(statusCodeEsperado, response.statusCode(), "Falhar ao validar status da reposta.");
     }
 
-    @Quando("envio um com dados validos datatable")
-    public void envio_um_com_dados_validos_datatable(DataTable dataTable) {
+    @Quando("envio um request com dados validos datatable")
+    public void envio_um_request_com_dados_validos_datatable(DataTable dataTable) {
         uri = prop.getProp("uri_correios");
         headers = ApiHeaders.setEmptyHeaders();
         params = ApiParams.setParams(dataTable.asMaps().get(0));
         super.GET();
     }
 
-    @Quando("envio um com dados  {string}, {string}")
-    public void envio_um_com_dados(String sCepOrigem, String sCepDestino) {
+    @Quando("envio um request com dados {string}, {string}")
+    public void envio_um_request_com_dados(String sCepOrigem, String sCepDestino) {
         uri = prop.getProp("uri_correios");
         headers = ApiHeaders.setEmptyHeaders();
         params = ApiParams.getParams();

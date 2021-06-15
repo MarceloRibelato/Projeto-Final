@@ -8,18 +8,17 @@ Funcionalidade: Calcular o valor do Frete.
   Eu como usuario da api dos correios envio request com dados de origem e destino e caracteristicas do produto
   Para saber o valor do frete e tempo de entrega
 
-
   @frete
   Cenario: Calculando o valor do frete com dados validos
     Dado que possou um token valido
-    Quando envio um com dados validos
+    Quando envio um request com dados validos
     Então o valor do frete deve ser "31,00"
     E o status code deve ser 200
 
   @freteDataTable
   Cenario: Calculando o valor do frete com dados validos
     Dado que possou um token valido
-    Quando envio um com dados validos datatable
+    Quando envio um request com dados validos datatable
       | StrRetorno | nCdServico | sCepOrigem | sCepDestino | nVlPeso | nVlComprimento | nVlAltura | nVlLargura |
       | xml        | 04510      | 74371520   | 1327000     | 3.00    | 40.00          | 20.00     | 25         |
     Então o valor do frete deve ser "40,60"
@@ -29,7 +28,7 @@ Funcionalidade: Calcular o valor do Frete.
   @freteEsquemaDeCenario
   Esquema do Cenario:  Calculando o valor do frete com dados validos
     Dado que possou um token valido
-    Quando envio um com dados  "<sCepOrigem>", "<sCepDestino>"
+    Quando envio um request com dados "<sCepOrigem>", "<sCepDestino>"
     Então o valor do frete deve ser "<valorFrete>"
     E o status code deve ser 200
 
@@ -42,7 +41,7 @@ Funcionalidade: Calcular o valor do Frete.
   @freteEsquemaCenario
   Esquema do Cenario:  Calculando o valor do frete com dados invalidos
     Dado que possou um token valido
-    Quando envio um com dados  "<sCepOrigem>", "<sCepDestino>"
+    Quando envio um request com dados "<sCepOrigem>", "<sCepDestino>"
     Então ddeve ser exibida a mensagem "<msg>"
     E o status code deve ser 200
 

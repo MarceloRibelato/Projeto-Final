@@ -23,7 +23,7 @@ public class ReportUtils {
         reportBuilder.setReportDirectory("target/report/");
         reportBuilder.setReportFileName(dateFormatFile.format(date));
         reportBuilder.setReportTitle("Sr.Barriga");
-        reportBuilder.setReportColor(Color.CYAN);
+        reportBuilder.setReportColor(Color.GREY);
         reportBuilder.enableVoiceControl();
         reportBuilder.setAdditionalInfo("Environment", "My Environment");
         reportBuilder.setAdditionalInfo("Date", dateFormat.format(date));
